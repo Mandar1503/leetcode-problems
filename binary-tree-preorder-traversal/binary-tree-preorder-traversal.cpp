@@ -11,49 +11,49 @@
  */
 
 //Iterative solution using stack
-// class Solution {
-// public:
-//     vector<int> preorderTraversal(TreeNode* root) {
-//         vector<int> result;
-//         stack<TreeNode*> stk;
-        
-//         if(!root)         //check if the root is null, if yes return otherwise further it will give you a error stating pointer accessed having null value
-//             return result;
-        
-//         stk.push(root);//push first root
-//         while(!stk.empty()) //until stack empty
-//         {
-//             TreeNode* node = stk.top(); //get top node
-//             result.push_back(node->val);//push the value
-//             stk.pop();                  //pop the first element
-//             if(node->right)             //first right
-//                 stk.push(node->right);
-//             if(node->left)              //then left
-//                 stk.push(node->left);
-//         }
-//         return result;
-//     }
-// };
-
-
-//USING RECURSION 
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> result;
-        preorder(root,result);
+        stack<TreeNode*> stk;
+        
+        if(!root)         //check if the root is null, if yes return otherwise further it will give you a error stating pointer accessed having null value
+            return result;
+        
+        stk.push(root);//push first root
+        while(!stk.empty()) //until stack empty
+        {
+            TreeNode* node = stk.top(); //get top node
+            result.push_back(node->val);//push the value
+            stk.pop();                  //pop the first element
+            if(node->right)             //first right
+                stk.push(node->right);
+            if(node->left)              //then left
+                stk.push(node->left);
+        }
         return result;
     }
-    
-    void preorder(TreeNode* root, vector<int>& res)
-    {
-        if(root == NULL)
-            return;
-        res.push_back(root->val);
-        preorder(root->left,res);
-        preorder(root->right,res);
-    }
 };
+
+
+//USING RECURSION 
+// class Solution {
+// public:
+//     vector<int> preorderTraversal(TreeNode* root) {
+//         vector<int> result;
+//         preorder(root,result); //use this diff func so that we can do recursive call
+//         return result;
+//     }
+    
+//     void preorder(TreeNode* root, vector<int>& res)
+//     {
+//         if(root == NULL)
+//             return;
+//         res.push_back(root->val);    //push to result
+//         preorder(root->left,res);    //iterate left part
+//         preorder(root->right,res);   //iterate right part
+//     }
+// };
 
 
 //USING MORRIS TRAVERSAL - Very complicated
