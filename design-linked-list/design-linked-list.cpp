@@ -1,11 +1,12 @@
 struct Node{
     int val;
     Node* next;
-    Node(int val)
-    {
-        this->val = val;
-        next = NULL;
-    }
+    // Node(int val)
+    // {
+    //     this->val = val;
+    //     next = NULL;
+    // }
+    Node(int x): val(x), next(NULL){}
 };
 
 class MyLinkedList {
