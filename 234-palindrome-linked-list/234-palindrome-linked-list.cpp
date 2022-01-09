@@ -44,6 +44,10 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
+        
+        if(head==NULL)
+            return true;
+        
         //get the end if the first half and reverse the second part
         ListNode* firstHalfEnd = findEleSecondHalf(head);
         ListNode* eleToReverse = revSecondHalf(firstHalfEnd->next);
