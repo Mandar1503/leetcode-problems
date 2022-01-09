@@ -8,27 +8,66 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+//My Approach works pretty good
+// class Solution {
+// public:
+//     ListNode* removeElements(ListNode* head, int val) {
+//         ListNode* temp =head;
+        
+//         while(head!=NULL && head->val==val)
+//         {
+//             head = head->next; 
+//             temp = head;
+//         }
+//         if(head==NULL)
+//             return head;
+//         while(temp->next!=NULL)
+//         {
+//             if(temp->next->val==val)
+//             {
+//                 temp->next = temp->next->next;
+//             }
+//             else
+//                 temp=temp->next;
+//         }
+//         return head;
+//     }
+// };
+
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-        ListNode* temp =head;
+        ListNode* sentinel = new ListNode(0);
+        sentinel->next = head;
         
-        while(head!=NULL && head->val==val)
+        ListNode* prev = sentinel;
+        ListNode* curr = head;
+        ListNode* toDelete = NULL;
+        
+        while(curr!=NULL)
         {
-            head = head->next; 
-            temp = head;
-        }
-        if(head==NULL)
-            return head;
-        while(temp->next!=NULL)
-        {
-            if(temp->next->val==val)
+            if(curr->val==val)
             {
-                temp->next = temp->next->next;
+                prev->next=curr->next;
+                toDelete = curr;
             }
             else
-                temp=temp->next;
+            {
+                prev = curr;
+            }
+            curr=curr->next;
+            
+            if(toDelete!=NULL)
+            {
+                delete toDelete;
+                toDelete = NULL;
+            }
         }
-        return head;
+        
+        ListNode* ans = sentinel->next;
+        delete sentinel;
+        return ans;
     }
 };
+
