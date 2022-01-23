@@ -1,4 +1,5 @@
 //MY SOLUTION BEST SOLUTION
+//Also look at the solution for binary approach = GOOD BUT COMPLICATED
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {
