@@ -18,39 +18,7 @@
 // };
 
 
-//USING MAX HEAP IE PRIORITY QUEUE = MY Solution
-// class Solution {
-// public:
-//     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        
-//         priority_queue<pair<int,int>> maxheap;
-        
-//         for(int i=0;i<points.size();i++)
-//         {
-//             if(k<=maxheap.size())
-//             {
-//                 maxheap.pop();
-//             }
-//             maxheap.push({squaredDist(points[i]),i});
-//         }
-        
-//         vector<vector<int>> ans;
-//         while(!maxheap.empty())
-//         {
-//             ans.push_back(points[maxheap.top().second]);
-//             maxheap.pop();
-//         }
-//         return ans;
-//     }
-
-// private:
-//     int squaredDist(vector<int>& point)
-//     {
-//         return point[0]*point[0]+point[1]*point[1];
-//     }
-// };
-
-//USING MAX HEAP IE PRIORITY QUEUE = Their solution
+//USING MAX HEAP IE PRIORITY QUEUE = Their solution 
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
@@ -65,7 +33,7 @@ public:
             {
                 maxheap.push(entry);
             }
-            else if(entry.first<maxheap.top().first)
+            else if(entry.first<maxheap.top().first) //IMPO TO ADD THIS CONDITION SINCE IF WE HAVE TO CHECK IF THE ELEMENT TO BE PUSHED IS CLOSER THAN THE FARTHEST ELEMENT IN THE HEAP
             {
                 maxheap.pop();
                 maxheap.push(entry);
