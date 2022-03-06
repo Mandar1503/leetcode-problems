@@ -9,20 +9,45 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//Recursive traversal with valid range
+// class Solution {
+// public:
+//     bool isValidBST(TreeNode* root) {
+//      return validate(root,NULL,NULL);   
+//     }
+    
+//     bool validate(TreeNode* root, TreeNode* low, TreeNode* high)
+//     {
+//         if(root==NULL)
+//             return true;
+        
+//         if((low!=NULL && low->val >= root->val)||(high!=NULL && high->val <= root->val))
+//             return false;
+        
+//         return validate(root->left,low,root) && validate(root->right,root,high);
+//     }
+// };
+
+
+//Recursive inorder Traversal
 class Solution {
 public:
+    TreeNode* prev;
     bool isValidBST(TreeNode* root) {
-     return validate(root,NULL,NULL);   
+        prev = NULL;
+        return inorder(root);
     }
     
-    bool validate(TreeNode* root, TreeNode* low, TreeNode* high)
+    bool inorder(TreeNode* root)
     {
         if(root==NULL)
             return true;
-        
-        if((low!=NULL && low->val >= root->val)||(high!=NULL && high->val <= root->val))
+        if(!inorder(root->left))
             return false;
-        
-        return validate(root->left,low,root) && validate(root->right,root,high);
+        if(prev!=NULL && root->val <= prev->val)
+            return false;
+        prev = root;
+        return inorder(root->right);
     }
 };
