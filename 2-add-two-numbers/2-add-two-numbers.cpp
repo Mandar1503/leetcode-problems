@@ -13,8 +13,8 @@ public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* p1 = l1;
         ListNode* p2 = l2;
-        ListNode* ans =new ListNode();
-        ListNode* a = ans;
+        ListNode* ans =new ListNode(); //create a dummy node 
+        ListNode* a = ans;             //pointer to the dummy node
         
         int carry = 0;
         int sum = 0;
