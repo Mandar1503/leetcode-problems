@@ -1,3 +1,4 @@
+//MY SOLUTION
 class Solution {
 public:
     bool isValid(string s) {
@@ -17,9 +18,6 @@ public:
             else
                 return false;
         }
-        if(!brkts.empty())
-            return false;
-        else
-            return true;        
+        return brkts.empty();        
     }
 };
