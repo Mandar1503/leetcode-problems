@@ -7,13 +7,9 @@ class Solution {
         {
             int no = target - nums[i];
             if(ele.containsKey(no))
-            {
                 return new int[] {ele.get(no), i};
-            }
             else
-            {
                 ele.put(nums[i],i);
-            }
         }
         return null;
     }
