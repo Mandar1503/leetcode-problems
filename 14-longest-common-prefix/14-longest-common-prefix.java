@@ -1,3 +1,5 @@
+//LOOK FOR THE DIVIDE AND CONQUER AND BINARY SEARCH
+
 //horizontal scanning
 // class Solution {
 //     public String longestCommonPrefix(String[] strs) {
