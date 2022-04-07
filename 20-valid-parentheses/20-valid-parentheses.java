@@ -1,18 +1,45 @@
+//Using hashmap
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> br = new Stack<>();
+        HashMap<Character,Character> map = new HashMap<>();
+        Stack<Character> stk = new Stack<>();
+        map.put(')','(');
+        map.put(']','[');
+        map.put('}','{');
         
-        for(char c : s.toCharArray())
+        for(char c: s.toCharArray())
         {
-            if(c=='{' || c=='(' || c=='[')
-                br.push(c);
+            if(map.containsKey(c))
+            {
+                if(!stk.isEmpty() && map.get(c)==stk.peek())
+                    stk.pop();
+                else
+                    return false;
+            }
             else
             {
-                if(br.isEmpty() || (c!='}' && br.peek()=='{') || (c!=')' && br.peek()=='(') ||(c!=']' && br.peek()=='['))
-                    return false;
-                br.pop();
+                stk.push(c);
             }
         }
-        return br.isEmpty();
+        return stk.isEmpty();
     }
 }
+
+// class Solution {
+//     public boolean isValid(String s) {
+//         Stack<Character> br = new Stack<>();
+        
+//         for(char c : s.toCharArray())
+//         {
+//             if(c=='{' || c=='(' || c=='[')
+//                 br.push(c);
+//             else
+//             {
+//                 if(br.isEmpty() || (c!='}' && br.peek()=='{') || (c!=')' && br.peek()=='(') ||(c!=']' && br.peek()=='['))
+//                     return false;
+//                 br.pop();
+//             }
+//         }
+//         return br.isEmpty();
+//     }
+// }
