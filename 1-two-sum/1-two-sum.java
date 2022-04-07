@@ -8,15 +8,13 @@ class Solution {
             int no = target - nums[i];
             if(ele.containsKey(no))
             {
-                ans[0] = ele.get(no);
-                ans[1] = i;
-                return ans;
+                return new int[] {ele.get(no), i};
             }
             else
             {
                 ele.put(nums[i],i);
             }
         }
-        return ans;
+        return new int[]{};
     }
 }
