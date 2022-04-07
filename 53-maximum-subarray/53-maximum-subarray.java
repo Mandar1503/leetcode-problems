@@ -31,8 +31,8 @@ class Solution {
         if(l>r)
             return Integer.MIN_VALUE;
         
-        double div = (l+r)/2;
-        int mid = (l+r)/2;
+        int mid = Math.floorDiv(l+r,2);
+        //int mid = (l+r)/2; //this can also be used
         int curr = 0;
         int bRSum = 0;
         int bLSum = 0;
