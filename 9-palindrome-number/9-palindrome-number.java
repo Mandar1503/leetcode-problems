@@ -6,8 +6,8 @@ class Solution {
         String rev="";
         for(int i=arr.length-1;i>=0;i--)
         {
-            //rev.concat(String.valueOf(arr[i]));
-            rev=rev+arr[i];
+            rev = rev.concat(String.valueOf(arr[i]));
+            //rev=rev+arr[i];
         }
         System.out.println(xno);
         System.out.println(rev);
