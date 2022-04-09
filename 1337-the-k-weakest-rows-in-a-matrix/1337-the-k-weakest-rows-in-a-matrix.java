@@ -1,3 +1,4 @@
+//MY SOLUTION USING HEAP AND HASHMAP
 class Solution {
     public int[] kWeakestRows(int[][] mat, int k) {
         
