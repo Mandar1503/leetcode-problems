@@ -8,8 +8,6 @@ class Solution {
             freq.put(nums[i],freq.getOrDefault(nums[i],0)+1);
         }
         
-        // System.out.print(freq);
-        
         PriorityQueue<Pair<Integer,Integer>> minheap = new PriorityQueue<>((n1,n2)->n1.getValue()-n2.getValue());
         
         
@@ -21,7 +19,6 @@ class Solution {
                 minheap.poll();
         }
         
-        // System.out.print(minheap);
         
         int result[] = new int[k];
         int i=0;
@@ -37,12 +34,6 @@ class Solution {
         //     result[i] = minheap.poll().getKey();
         //     i++;
         // }
-        
-        
-        
-        
-        
-        
         return result;
     }
 }
