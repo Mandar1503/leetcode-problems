@@ -1,3 +1,4 @@
+//MY SOLUTION
 class KthLargest {
     
     PriorityQueue<Integer> pq = new PriorityQueue<>();
@@ -8,9 +9,10 @@ class KthLargest {
         
         for(int num:nums)
         {
-            pq.add(num);
-            if(pq.size()>k)
-                pq.poll();
+            // pq.add(num);
+            // if(pq.size()>k)
+            //     pq.poll();
+            this.add(num);
         }
     }
     
