@@ -17,6 +17,11 @@ class Solution {
         
         PriorityQueue<Integer> minheap = new PriorityQueue<>((n1,n2)->((map.get(n1)==map.get(n2))?n1-n2:map.get(n1)-map.get(n2)));
         
+ //           PriorityQueue<Integer> minheap = new PriorityQueue<>((n1,n2)->{if(map.get(n1)==map.get(n2))
+ //               return n1-n2;
+ // else
+ //     return map.get(n1)-map.get(n2);});
+        
         for(int i=0;i<mat.length;i++)
         {
             minheap.add(i);
