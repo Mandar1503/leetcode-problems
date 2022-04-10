@@ -63,26 +63,57 @@
 
 
 //RECURSIVE APPROACH
+// class Solution {
+//     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+//         if(list1==null)
+//             return list2;
+//         if(list2==null)
+//             return list1;
+        
+//         ListNode head;
+//         if(list1.val < list2.val)
+//         {
+//             head = list1;
+//             list1=list1.next;
+//         }
+//         else
+//         {
+//             head = list2;
+//             list2=list2.next;
+//         }
+//         head.next = mergeTwoLists(list1,list2);
+//         return head;
+//     }
+// }
+
+//ITERATIVE SOLUTION BUT WITHOUT USING A NEW LINKEDLIST
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         
-        if(list1==null)
-            return list2;
-        if(list2==null)
-            return list1;
+        ListNode head = new ListNode();
+        ListNode l = head;
         
-        ListNode head;
-        if(list1.val < list2.val)
+        while(list1!=null && list2!=null)
         {
-            head = list1;
-            list1=list1.next;
+            if(list1.val<list2.val)
+            {
+                l.next = list1;
+                list1=list1.next;
+            }
+            else
+            {
+                l.next = list2;
+                list2=list2.next;
+            }
+            l=l.next;
         }
+        
+        if(list1==null)
+            l.next = list2;
         else
-        {
-            head = list2;
-            list2=list2.next;
-        }
-        head.next = mergeTwoLists(list1,list2);
-        return head;
+            l.next = list1;
+        
+        return head.next;
     }
 }
