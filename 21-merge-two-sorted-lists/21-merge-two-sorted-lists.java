@@ -62,7 +62,7 @@
 
 
 
-//RECURSIVE APPROACH
+//RECURSIVE APPROACH(stack space is used up here)
 // class Solution {
 //     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         
@@ -87,7 +87,7 @@
 //     }
 // }
 
-//ITERATIVE SOLUTION BUT WITHOUT USING A NEW LINKEDLIST
+//ITERATIVE SOLUTION BUT WITHOUT USING A NEW LINKEDLIST(better since constant space used)
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         
