@@ -56,9 +56,9 @@ class Solution {
         
         int N = matrix.length;
         
-        PriorityQueue<MyHeapNode> minheap = new PriorityQueue<MyHeapNode>(new MyComparator());
+        PriorityQueue<MyHeapNode> minheap = new PriorityQueue<MyHeapNode>(Math.min(N,k),new MyComparator());
         
-        for(int i=0;i<N;i++)
+        for(int i=0;i<Math.min(N,k);i++)
         {
             minheap.add(new MyHeapNode(matrix[i][0],i,0));
         }
