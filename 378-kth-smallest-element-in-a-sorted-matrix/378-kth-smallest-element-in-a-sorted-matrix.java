@@ -58,7 +58,7 @@ class Solution {
         
         PriorityQueue<MyHeapNode> minheap = new PriorityQueue<MyHeapNode>(Math.min(N,k),new MyComparator());
         
-        for(int i=0;i<Math.min(N,k);i++)
+        for(int i=0;i<Math.min(N,k);i++)  //works even if don't write min()
         {
             minheap.add(new MyHeapNode(matrix[i][0],i,0));
         }
