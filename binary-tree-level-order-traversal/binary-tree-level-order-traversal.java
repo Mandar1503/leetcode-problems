@@ -28,16 +28,16 @@ class Solution {
     
     private void bfs(TreeNode node, int level)
     {
-        if(node==null)
-            return;
+        // if(node==null)                       //can write the base case here for node==null instead of the recursive call
+        //     return;
         if(levels.size()==level)                    //IF LEVEL.SIZE IS 1 LESS THAN CURR LEVEL
             levels.add(new LinkedList<Integer>());  //ADD A NEW LIST
         
         levels.get(level).add(node.val);            //ADD THE NODE VALUE IN ITS LEVEL LIST
         
-        //if(node.left!=null)                         //LOOK FOR LEFT CHILD AND CALL IT RECURSIVELY
+        if(node.left!=null)                         //LOOK FOR LEFT CHILD AND CALL IT RECURSIVELY
             bfs(node.left,level+1);
-        //if(node.right!=null)
+        if(node.right!=null)
             bfs(node.right,level+1);                //LOOK FOR RIGHT CHILD AND CALL IT RECURSIVELY
     }
 }
