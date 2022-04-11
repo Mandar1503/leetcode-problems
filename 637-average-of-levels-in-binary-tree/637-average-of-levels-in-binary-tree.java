@@ -114,8 +114,7 @@ class Solution {
                 if(node.right!=null)
                     q.add(node.right);
             }
-            double avg = (double)sum/qsize;
-            result.add(avg);
+            result.add((double)sum/qsize);
             level++;
         }
         return result;
