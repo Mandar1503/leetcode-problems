@@ -1,4 +1,4 @@
-<h2>145. Binary Tree Postorder Traversal</h2><h3>Easy</h3><hr><div><p>Given the <code>root</code> of a&nbsp;binary tree, return <em>the postorder traversal of its nodes' values</em>.</p>
+<h2>  Binary Tree Postorder Traversal</h2><hr><div><p>Given the <code>root</code> of a&nbsp;binary tree, return <em>the postorder traversal of its nodes' values</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
