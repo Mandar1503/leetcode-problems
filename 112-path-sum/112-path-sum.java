@@ -13,24 +13,41 @@
  *     }
  * }
  */
-class Solution {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
-        if(root==null)
-            return false;
+
+//MY SOLUTION = RECURSION = TOP DOWN APPROACH
+// class Solution {
+//     public boolean hasPathSum(TreeNode root, int targetSum) {
+//         if(root==null)
+//             return false;
         
-        int sum = 0;
-        return pathSum(root,sum,targetSum);
-    }
+//         int sum = 0;
+//         return pathSum(root,sum,targetSum);
+//     }
     
-    private boolean pathSum(TreeNode root, int sum, int targetSum)
-    {
+//     private boolean pathSum(TreeNode root, int sum, int targetSum)
+//     {
+//         if(root==null)
+//             return false; 
+//         if(root.left==null && root.right==null && (sum+root.val)==targetSum)
+//             return true;
+//         else if(root.left==null && root.right==null && (sum+root.val)!=targetSum)
+//             return false;
+        
+//         return pathSum(root.left, sum+root.val, targetSum) || pathSum(root.right, sum+root.val, targetSum);
+//     }
+// }
+
+class Solution {
+    private boolean res = false;
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        
         if(root==null)
-            return false; 
-        if(root.left==null && root.right==null && (sum+root.val)==targetSum)
-            return true;
-        else if(root.left==null && root.right==null && (sum+root.val)!=targetSum)
             return false;
         
-        return pathSum(root.left, sum+root.val, targetSum) || pathSum(root.right, sum+root.val, targetSum);
-    }
+        targetSum-=root.val;
+        if(root.left==null && root.right==null && targetSum==0)
+            return true;
+        
+        return hasPathSum(root.left,targetSum) || hasPathSum(root.right,targetSum);
+    }  
 }
