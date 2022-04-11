@@ -14,22 +14,6 @@
  * }
  */
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-
 //MY SOLUTION USING BFS
 // class Solution {
 //     public List<Double> averageOfLevels(TreeNode root) {
@@ -71,23 +55,7 @@
 //     }
 // }
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-
-//MY SOLUTION USING BFS
+//MY OPTIMIZED SOLUTION USING BFS(100%)
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
         List<List<Integer>> levels = new LinkedList<>();
