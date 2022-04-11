@@ -40,33 +40,34 @@
 //     }
 // }
 
+//ITERATIVE SOLUTION USING QUEUE
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         
         List<List<Integer>> levels = new LinkedList<>();
         Queue<TreeNode> q = new LinkedList<>();
         
-        if(root==null)
+        if(root==null)                              //IF TREE IS EMPTY
             return levels;
         
-        int level = 0;
-        q.add(root);
+        int level = 0;                              //LEVELS = 0
+        q.add(root);                                //ADD ROOT INTO Q
         
-        while(!q.isEmpty())
-        {
-            levels.add(new LinkedList<Integer>());
-            int qsize = q.size();
-            for(int i=0;i<qsize;i++)
+        while(!q.isEmpty())                         //UNTIL Q EMPTY
+        {                                           
+            levels.add(new LinkedList<Integer>());  //CREATE A NEW SUBLIST IN LEVELS
+            int qsize = q.size();                   
+            for(int i=0;i<qsize;i++)                //ITERATE FOR LOOP TO ENTER ALL THE ELEMENTS ON THE LEVEL IN ANS BY RUNNING IT FOR Q.SIZE
             {
-                TreeNode node = q.remove();
-                levels.get(level).add(node.val);
+                TreeNode node = q.remove();         //USE REMOVE() TO REMOVE FROM FRONT
+                levels.get(level).add(node.val);    //ADD IT TO ITS LEVELS LIST
                 
-                if(node.left!=null)
+                if(node.left!=null)                 //PUSH LEFT CHILD IN Q IF EXISTS
                     q.add(node.left);
                 if(node.right!=null)
-                    q.add(node.right);
+                    q.add(node.right);              //PUSH RIGHT CHILD IN Q IF EXISTS
             }
-            level++;
+            level++;                                //IMPO = INCR LEVEL
         }
         return levels;
     }
