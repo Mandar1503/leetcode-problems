@@ -1,4 +1,4 @@
-<h2>144. Binary Tree Preorder Traversal</h2><h3>Easy</h3><hr><div><p>Given the <code>root</code> of a binary tree, return <em>the preorder traversal of its nodes' values</em>.</p>
+<h2>  Binary Tree Preorder Traversal</h2><hr><div><p>Given the <code>root</code> of a binary tree, return <em>the preorder traversal of its nodes' values</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
