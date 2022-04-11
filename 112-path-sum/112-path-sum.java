@@ -30,8 +30,8 @@ class Solution {
             return false; 
         if(root.left==null && root.right==null && (sum+root.val)==targetSum)
             return true;
-        else if(root.left==null && root.right==null && (sum+root.val)!=targetSum)
-            return false;
+        // else if(root.left==null && root.right==null && (sum+root.val)!=targetSum)
+        //     return false;
         
         return pathSum(root.left, sum+root.val, targetSum) || pathSum(root.right, sum+root.val, targetSum);
     }
