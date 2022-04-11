@@ -13,27 +13,61 @@
  *     }
  * }
  */
-class Solution {
-    List<List<Integer>> levels = new LinkedList<>();
+
+//RECURSIVE APPROACH
+// class Solution {
+//     List<List<Integer>> levels = new LinkedList<>();
     
+//     public List<List<Integer>> levelOrder(TreeNode root) {
+        
+//         if(root==null)          //IF EMPTY TREE
+//             return levels;
+//         bfs(root, 0);           //CALL TO BFS
+//         return levels;
+//     }
+    
+//     private void bfs(TreeNode node, int level)
+//     {
+//         if(levels.size()==level)                    //IF LEVEL.SIZE IS 1 LESS THAN CURR LEVEL
+//             levels.add(new LinkedList<Integer>());  //ADD A NEW LIST
+        
+//         levels.get(level).add(node.val);            //ADD THE NODE VALUE IN ITS LEVEL LIST
+        
+//         if(node.left!=null)                         //LOOK FOR LEFT CHILD AND CALL IT RECURSIVELY
+//             bfs(node.left,level+1);
+//         if(node.right!=null)
+//             bfs(node.right,level+1);                //LOOK FOR RIGHT CHILD AND CALL IT RECURSIVELY
+//     }
+// }
+
+class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
+        
+        List<List<Integer>> levels = new LinkedList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         
         if(root==null)
             return levels;
-        bfs(root, 0);
-        return levels;
-    }
-    
-    private void bfs(TreeNode node, int level)
-    {
-        if(levels.size()==level)
+        
+        int level = 0;
+        q.add(root);
+        
+        while(!q.isEmpty())
+        {
             levels.add(new LinkedList<Integer>());
-        
-        levels.get(level).add(node.val);
-        
-        if(node.left!=null)
-            bfs(node.left,level+1);
-        if(node.right!=null)
-            bfs(node.right,level+1);
+            int qsize = q.size();
+            for(int i=0;i<qsize;i++)
+            {
+                TreeNode node = q.remove();
+                levels.get(level).add(node.val);
+                
+                if(node.left!=null)
+                    q.add(node.left);
+                if(node.right!=null)
+                    q.add(node.right);
+            }
+            level++;
+        }
+        return levels;
     }
 }
