@@ -25,16 +25,16 @@ class Solution {
         
         while(!stack.isEmpty())
         {
-            TreeNode node = stack.pollLast();
+            TreeNode node = stack.pop();//TreeNode node = stack.pollLast();
             output.add(node.val);
             
             if(node.right!=null)
             {
-                stack.add(node.right);
+                stack.push(node.right);//stack.add(node.right);
             }
             if(node.left!=null)
             {
-                stack.add(node.left);
+                stack.push(node.left);//stack.add(node.left);
             }
         }
         
