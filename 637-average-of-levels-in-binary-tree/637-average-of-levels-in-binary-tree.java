@@ -89,6 +89,7 @@
 //     }
 // }
 
+//THEIR SOLUTION = USING DFS 
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
         LinkedList<Integer> count = new LinkedList<>();
