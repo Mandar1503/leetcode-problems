@@ -39,18 +39,18 @@ class Solution {
         ArrayList<Integer> l = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         
-        TreeNode curr = root;
+        TreeNode curr = root;                           //CURR
         
-        while(curr!=null || !stack.isEmpty())
+        while(curr!=null || !stack.isEmpty())           
         {
-            while(curr!=null)
+            while(curr!=null)                           //GO LEFT END AND ADD STACK
             {
                 stack.add(curr);
                 curr=curr.left;
             }
-            curr=stack.pop();
-            l.add(curr.val);
-            curr=curr.right;
+            curr=stack.pop();                           //POP AND PRINT
+            l.add(curr.val);    
+            curr=curr.right;                            //GO RIGHT
         }
         return l;
     }
