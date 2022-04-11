@@ -37,16 +37,46 @@
 // }
 
 
-//BOTTOM UP APPROACH
+//RECURSION = BOTTOM UP APPROACH 
+// class Solution {
+//     public int maxDepth(TreeNode root) {
+        
+//         if(root==null)
+//             return 0;
+        
+//         int leftDepth = maxDepth(root.left);
+//         int rightDepth = maxDepth(root.right);
+        
+//         return Math.max(leftDepth,rightDepth)+1;
+//     }
+// }
+
+
+//ITERATIVE USE BFS
 class Solution {
     public int maxDepth(TreeNode root) {
+        
+        Queue<TreeNode> q = new LinkedList<>();
+        int level =0;
         
         if(root==null)
             return 0;
         
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
+        q.add(root);
         
-        return Math.max(leftDepth,rightDepth)+1;
+        while(!q.isEmpty())
+        {
+            int qsize =q.size();
+            for(int i=0;i<qsize;i++)
+            {
+                TreeNode node = q.remove();
+                if(node.left!=null)
+                    q.add(node.left);
+                if(node.right!=null)
+                    q.add(node.right);
+            }
+            level++;
+        }
+        return level;
     }
 }
