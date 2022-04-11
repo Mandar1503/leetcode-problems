@@ -14,7 +14,7 @@
  * }
  */
 
-//TOP DOWN APPROACH BUT NOT WORKING
+//TOP DOWN APPROACH
 class Solution {
     private int answer = 1;
     public int maxDepth(TreeNode root) {
