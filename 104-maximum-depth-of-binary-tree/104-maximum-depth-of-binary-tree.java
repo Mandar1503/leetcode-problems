@@ -66,7 +66,8 @@ class Solution {
         
         while(!q.isEmpty())
         {
-            int qsize =q.size();
+            int qsize =q.size(); //IMPO
+            
             for(int i=0;i<qsize;i++)
             {
                 TreeNode node = q.remove();
