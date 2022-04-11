@@ -105,12 +105,12 @@ class Solution {
     {
         if(root==null)
             return;
-        if(i<res.size())
+        if(i<res.size())    //IF THE LEVEL IS CREATED THEN JUST ADD INTO IT
         {
             res.set(i,res.get(i)+root.val);
             count.set(i,count.get(i)+1);    
         }
-        else
+        else            //IF THE LEVEL IS NOT CREATED YET, THEN SET THE VALUES AS 1 
         {
             res.add(1.0*root.val);
             count.add(1);
