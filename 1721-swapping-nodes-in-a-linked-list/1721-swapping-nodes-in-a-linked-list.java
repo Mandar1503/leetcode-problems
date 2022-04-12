@@ -9,30 +9,62 @@
  * }
  */
 
+//TWO PASS SOLUTION
+// class Solution {
+//     public ListNode swapNodes(ListNode head, int k) {
+        
+//         int listlength = 1;
+//         ListNode tempNode = head;
+//         ListNode frontNode = null;
+        
+//         while(tempNode!=null)
+//         {
+//             if(listlength==k)
+//                 frontNode = tempNode;
+//             tempNode=tempNode.next;
+//             listlength++;
+//         }
+        
+//         ListNode lastNode=null;
+//         tempNode=head;
+//         int track =1;
+//         while(tempNode!=null)
+//         {
+//             if(listlength-k==track)
+//                 lastNode = tempNode;
+//             tempNode=tempNode.next;
+//             track++;
+//         }
+        
+//         int temp = frontNode.val;
+//         frontNode.val = lastNode.val;
+//         lastNode.val = temp;
+        
+//         return head;
+//     }
+// }
+
 //ONE PASS SOLUTION
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
         
-        int listlength = 1;
+        int listlength = 0;
         ListNode tempNode = head;
-        ListNode frontNode = new ListNode();
-        while(tempNode!=null)
-        {
-            if(listlength==k)
-                frontNode = tempNode;
-            tempNode=tempNode.next;
-            listlength++;
-        }
+        ListNode frontNode = null;
+        ListNode lastNode = null;
         
-        ListNode lastNode=new ListNode();
-        tempNode=head;
-        int track =1;
         while(tempNode!=null)
         {
-            if(listlength-k==track)
-                lastNode = tempNode;
+            listlength++;
+           if(lastNode!=null)
+               lastNode = lastNode.next;
+            
+            if(listlength==k)
+            {
+                frontNode = tempNode;
+                lastNode = head;
+            }
             tempNode=tempNode.next;
-            track++;
         }
         
         int temp = frontNode.val;
