@@ -26,7 +26,7 @@
 //     }
 // }
 
-
+//ITERATIVE SOLUTION SIMILAR TO THE RECURSIVE ONE BUT JUST WITH WHILE LOOP
 class Solution {
     public ListNode swapPairs(ListNode head) {
         
