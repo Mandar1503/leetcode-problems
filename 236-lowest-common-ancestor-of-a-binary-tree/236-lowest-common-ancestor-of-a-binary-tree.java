@@ -19,13 +19,13 @@ class Solution {
         if(node==null)
             return false;
         
-        int left = recurse(node.left,p,q)?1:0;
-        int right = recurse(node.right,p,q)?1:0;
-        int mid = (node==p || node==q)?1:0;
+        int left = recurse(node.left,p,q)?1:0;//set left true or false on the basis of its left childrens
+        int right = recurse(node.right,p,q)?1:0;//set right true or false on the basis of its right childrens
+        int mid = (node==p || node==q)?1:0;//set mid is true for the node since it is p or q
         
-        if(mid+left+right>=2)
+        if(mid+left+right>=2)  //if node is p/q and one of the l/r childrens other or l & r childrens contain p and q each then node is LCA
             ans = node;
         
-        return (mid+left+right>0);
+        return (mid+left+right>0);  //to pass true or false values to the parent nodes
     }
 }
