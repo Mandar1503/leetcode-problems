@@ -1,3 +1,4 @@
+//Using Comparator
 class Solution {
     public String[] reorderLogFiles(String[] logs) {
         Comparator<String> myComp = new Comparator<>(){
