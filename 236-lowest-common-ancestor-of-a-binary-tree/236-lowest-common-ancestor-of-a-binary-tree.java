@@ -8,7 +8,7 @@
  * }
  */
 class Solution {
-    private TreeNode ans;
+    private TreeNode ans = null;
     
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         
