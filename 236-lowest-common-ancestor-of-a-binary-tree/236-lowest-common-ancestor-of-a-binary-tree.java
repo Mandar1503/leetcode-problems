@@ -8,25 +8,23 @@
  * }
  */
 class Solution {
-    private TreeNode ans = null;
-    
+    TreeNode ans;
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        
-        recurseTree(root, p, q);
+        recurse(root,p,q);
         return ans;
     }
     
-    private boolean recurseTree(TreeNode root, TreeNode p, TreeNode q)
+    private boolean recurse(TreeNode node, TreeNode p, TreeNode q)
     {
-        if(root==null)
+        if(node==null)
             return false;
         
-        int left = recurseTree(root.left,p,q)?1:0;
-        int right = recurseTree(root.right,p,q)?1:0;
-        int mid = (root==p || root==q)?1:0;
+        int left = recurse(node.left,p,q)?1:0;
+        int right = recurse(node.right,p,q)?1:0;
+        int mid = (node==p || node==q)?1:0;
         
-        if(left+right+mid>=2)
-            ans = root;
+        if(mid+left+right>=2)
+            ans = node;
         
         return (mid+left+right>0);
     }
