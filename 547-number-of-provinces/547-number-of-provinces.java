@@ -45,7 +45,7 @@ class UnionFind{
         Set<Integer> set = new HashSet<>();
         for(int i=0;i<root.length;i++)
         {
-            set.add(find(i));
+            set.add(find(i));                //important step in the code 
         }
         return set.size();
     }
