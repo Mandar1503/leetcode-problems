@@ -2,7 +2,6 @@ class UnionFind{
     int[] root;
     int[] rank;
     
-    //initialization
     public UnionFind(int length)
     {
         root = new int[length];
@@ -15,7 +14,6 @@ class UnionFind{
         }
     }
     
-    //find function with path optimization
     public int find(int x)
     {
         if(root[x]==x)
@@ -23,14 +21,10 @@ class UnionFind{
         return root[x] = find(root[x]);
     }
     
-    //slightly changed union function return false if root is same before union otherwise true
-    public boolean union(int x, int y)
+    public void union(int x, int y)
     {
         int rootX = find(x);
         int rootY = find(y);
-        
-        if(rootX==rootY)
-            return false;
         
         if(rootX!=rootY)
         {
@@ -44,7 +38,16 @@ class UnionFind{
                 rootX+=1;
             }
         }
-        return true;
+    }
+    
+    public boolean count()
+    {
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i<root.length;i++)
+        {
+            set.add(find(i));                //important step in the code 
+        }
+        return set.size()==1?true:false;
     }
 }
 
@@ -52,16 +55,30 @@ class UnionFind{
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         UnionFind uf = new UnionFind(n);
-       
-        if(edges.length!=n-1)
-            return false;
-        
+        //int[][] connected =  new int[n][n];
+        // for(int i=0;i<n;i++)
+        // {
+        //     for(int j=0;j<n;j++)
+        //     {
+        //         connected[i][j] = 0;
+        //     }
+        // }
+        int count = 0;
         for(int i=0;i<edges.length;i++)
         {
-            if(!uf.union(edges[i][0],edges[i][1]))
-                return false;
+            //connected[edges[i][0]][edges[i][1]] = 1;
+            uf.union(edges[i][0],edges[i][1]);
+            count++;
         }
-        
-        return true;
+        // boolean flag = true;
+        // for(int i=0; i<uf.root.length-1; i++)
+        // {
+        //     if(uf.root[i]!=uf.root[i+1])
+        //         flag = false;
+        // }
+        if(count == n-1 && uf.count())
+            return true;
+        else 
+            return false;
     }
 }
