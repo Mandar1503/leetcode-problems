@@ -1,3 +1,4 @@
+//CODE WRITTEN BY ME
 class UnionFind
 {
     int[] root;
@@ -46,8 +47,10 @@ class UnionFind
 
 class Solution {
     public int earliestAcq(int[][] logs, int n) {
+        
         int ans=-1;
         UnionFind uf = new UnionFind(n);
+        
         Arrays.sort(logs, new Comparator<int[]>(){
             @Override
             public int compare(int entry1[], int entry2[])
@@ -55,14 +58,8 @@ class Solution {
                 return entry1[0] > entry2[0]?1:-1;
             }
         });
-        // for(int i=0;i<logs.length;i++)
-        // {    
-        //     for(int j=0;j<3;j++)
-        //     {    
-        //         System.out.print(logs[i][j]+" ");
-        //     }
-        //     System.out.println();
-        // }
+        
+        
         int count = n;
         for(int i=0;i<logs.length;i++)
         {
