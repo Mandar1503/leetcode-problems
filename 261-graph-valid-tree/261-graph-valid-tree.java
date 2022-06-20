@@ -2,6 +2,7 @@ class UnionFind{
     int[] root;
     int[] rank;
     
+    //initialization
     public UnionFind(int length)
     {
         root = new int[length];
@@ -14,6 +15,7 @@ class UnionFind{
         }
     }
     
+    //find function with path optimization
     public int find(int x)
     {
         if(root[x]==x)
@@ -21,6 +23,7 @@ class UnionFind{
         return root[x] = find(root[x]);
     }
     
+    //slightly changed union function return false if root is same before union otherwise true
     public boolean union(int x, int y)
     {
         int rootX = find(x);
@@ -43,16 +46,6 @@ class UnionFind{
         }
         return true;
     }
-    
-    public int count()
-    {
-        Set<Integer> set = new HashSet<>();
-        for(int i=0;i<root.length;i++)
-        {
-            set.add(find(i));                //important step in the code 
-        }
-        return set.size();
-    }
 }
 
 
@@ -69,16 +62,6 @@ class Solution {
                 return false;
         }
         
-        // boolean flag = true;
-        // for(int i=0; i<uf.root.length-1; i++)
-        // {
-        //     if(uf.root[i]!=uf.root[i+1])
-        //         flag = false;
-        // }
-        // if(count == n-1 && flag)
-        //     return true;
-        // else 
-        //     return false;
         return true;
     }
 }
