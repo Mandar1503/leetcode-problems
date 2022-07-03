@@ -1,31 +1,39 @@
+//BACKTRACKING SOLUTION(RECURSION, DFS)
+
 class Solution{
 
 	public List<List<Integer>> allPathsSourceTarget(int[][] graph)
 	{
+        
 		List<List<Integer>> paths = new ArrayList<>();
 		
+        //edge cases
 		if(graph == null || graph.length == 0)
 		{
 			return paths;
 		}		
-
+        
+        //1st recursive call
 		dfs(graph, 0, new ArrayList<>(),paths);
+        //return all paths
 		return paths;
 	}
 
+    //recursive function
 	public void dfs(int[][] graph, int node, List<Integer> path, List<List<Integer>> paths)
 	{
-		path.add(node);
-		if(node == graph.length - 1)
+        
+		path.add(node);         //add the node to the path first
+		if(node == graph.length - 1)    //if the added node is the target the we got a path
 		{
-			paths.add(new ArrayList<>(path));
-			return;
+			paths.add(new ArrayList<>(path));   //add the path to the soln
+			return;                             //go back to previous call 
 		}
-		
-		for(int neighbour : graph[node])
+		    
+		for(int neighbour : graph[node])        //if node target then iterate through its neighbours
 		{
-			dfs(graph, neighbour, path, paths);
-			path.remove(path.size()-1);
+			dfs(graph, neighbour, path, paths); //recursive call for the neighbouring node to go into depth
+			path.remove(path.size()-1);         //once we come back to backtrack we should delete the last element from 'path' so that we can continue finding other paths with the previous node.
 		}
 	}
 }
