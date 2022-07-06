@@ -1,3 +1,4 @@
+//BFS SOLUTION
 class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         //edge cases 
@@ -49,7 +50,7 @@ class Solution {
 }
 
 
-
+//DFS SOLUTION
 // class Solution {
 //     public boolean validPath(int n, int[][] edges, int source, int destination) {
 //         List<List<Integer>> adjlist = new ArrayList<>();
