@@ -54,35 +54,44 @@ class Solution {
 // class Solution {
 //     public boolean validPath(int n, int[][] edges, int source, int destination) {
 //         List<List<Integer>> adjlist = new ArrayList<>();
-        
+//         //create an adjacency list
 //         for(int i=0;i<n;i++)
 //         {
 //             adjlist.add(new ArrayList<>());
 //         }
-        
+//         //build an adjacency list
 //         for(int[] edge: edges)
 //         {
 //             adjlist.get(edge[0]).add(edge[1]);
 //             adjlist.get(edge[1]).add(edge[0]);
 //         }
         
+//         //use a stack
 //         Deque<Integer> stack = new ArrayDeque<>();
+        
+//         //push the source
 //         stack.push(source);
+        
+//         //create a visited array
 //         boolean seen[] = new boolean[n];
 //         Arrays.fill(seen,false);
         
+//         //iterate until stack is empty
 //         while(!stack.isEmpty())
 //         {
+//             //pop from stack
 //             int node = stack.pop();
-            
+//             //check if it is destination
 //             if(node == destination)
 //                 return true;
             
+//             //O/w if seen continue
 //             if(seen[node])
 //                 continue;
-            
+//             //o/w make it true
 //             seen[node] = true;
         
+//             //push the neighbours in the stack
 //             for(int neighbor : adjlist.get(node))
 //             {
 //                 stack.push(neighbor);
