@@ -50,7 +50,7 @@ class Solution {
                 totalCost += cost;
                 count--;
                 
-                for(int i=1;i<n;i++)
+                for(int i=0;i<n;i++)
                 {
                     if(!visited[i])
                     {
