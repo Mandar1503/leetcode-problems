@@ -29,9 +29,8 @@ class Solution {
         for(int i=1;i<n;i++)
         {
             int dist = Math.abs(points[0][0] - points[i][0]) + Math.abs(points[0][1] - points[i][1]);
-            Edge e = new Edge(0,i,dist);
-            allEdges.add(e);
-            pq.add(e);
+            allEdges.add(new Edge(0,i,dist));
+            pq.add(new Edge(0,i,dist));
         }
         
         int totalCost = 0;
