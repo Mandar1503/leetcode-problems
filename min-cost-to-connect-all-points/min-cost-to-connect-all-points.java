@@ -1,3 +1,4 @@
+//Prims Algorithm
 class Solution {
     
     class Edge{
@@ -35,7 +36,7 @@ class Solution {
         
         int totalCost = 0;
         //check for other edges from other points
-        int count = n-1;
+        int count = n-1;//have a count n-1 since 1st element is already considered
         while(!pq.isEmpty() && count > 0)
         {
             Edge curEdge = pq.poll();
@@ -43,13 +44,13 @@ class Solution {
             int point2 = curEdge.point2;
             int cost = curEdge.cost;
             
-            if(!visited[point2])
+            if(!visited[point2])    //see if 2nd point is not visited then only go inside
             {
                 visited[point2] = true;
                 totalCost += cost;
                 count--;
                 
-                for(int i=0;i<n;i++)
+                for(int i=0;i<n;i++)        //iterate for all its other connecting non visited neighbours
                 {
                     if(!visited[i])
                     {
