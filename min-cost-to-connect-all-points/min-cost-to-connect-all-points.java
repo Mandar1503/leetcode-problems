@@ -265,7 +265,7 @@ class Solution {
 //         return mstCost;        
 //     }
     
-//     public int manhattanDist(int x1, int y1, int x2, int y2)remaining_rsvp_dataremaining_rsvp_data
+//     public int manhattanDist(int x1, int y1, int x2, int y2)
 //     {
 //         return Math.abs(x2-x1)+Math.abs(y2-y1);
 //     }
