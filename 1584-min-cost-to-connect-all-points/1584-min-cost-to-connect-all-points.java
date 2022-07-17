@@ -1,4 +1,4 @@
-class Solution
+class Solution //can use Edge class instead of using int[] edge everywhere
 {
 	public int minCostConnectPoints(int[][] points)
 	{
