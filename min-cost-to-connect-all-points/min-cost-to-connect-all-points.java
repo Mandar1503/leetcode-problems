@@ -55,6 +55,7 @@ class Solution {
                     if(!visited[i])
                     {
                         int dist = Math.abs(points[point2][0] - points[i][0]) + Math.abs(points[point2][1] - points[i][1]);
+                        allEdges.add(new Edge(point2,i,dist));
                         pq.add(new Edge(point2,i,dist));
                     }
                 }
