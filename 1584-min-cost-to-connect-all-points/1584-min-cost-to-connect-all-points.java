@@ -1,3 +1,4 @@
+//Prims Algorithm = USE PQ AND A VISITED ARRAY TO KEEP TRACK OF EACH NODE 
 class Solution //can use Edge class instead of using int[] edge everywhere
 {
 	public int minCostConnectPoints(int[][] points)
@@ -223,6 +224,7 @@ class Solution //can use Edge class instead of using int[] edge everywhere
 
 
 //THIS IS CORRECT SOLUTION USING KRUSKALS ALGORITHM 
+// USE UNIONFIND TO CONNECT EDGES AND USE COLLECTION SORT TO SORT THE ARRAYLIST OF EDGES[] 
 // class UnionFind
 // {
 //     int[] root;
