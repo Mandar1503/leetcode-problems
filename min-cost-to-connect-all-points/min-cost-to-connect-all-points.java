@@ -18,7 +18,7 @@ class Solution {
         
         int n = points.length;
         
-        // List<Edge> allEdges = new ArrayList<>();
+        // List<Edge> allEdges = new ArrayList<>(); //WORKS FINE IF THIS LINE IS INCLUDED
         PriorityQueue<Edge> pq = new PriorityQueue<>((a,b)-> a.cost - b.cost);
         
         boolean[] visited = new boolean[n];
@@ -30,7 +30,7 @@ class Solution {
         for(int i=1;i<n;i++)
         {
             int dist = Math.abs(points[0][0] - points[i][0]) + Math.abs(points[0][1] - points[i][1]);
-            // allEdges.add(new Edge(0,i,dist));
+            // allEdges.add(new Edge(0,i,dist)); //WORKS FINE IF THIS LINE IS INCLUDED
             pq.add(new Edge(0,i,dist));
         }
         
@@ -55,7 +55,7 @@ class Solution {
                     if(!visited[i])
                     {
                         int dist = Math.abs(points[point2][0] - points[i][0]) + Math.abs(points[point2][1] - points[i][1]);
-                        // allEdges.add(new Edge(point2,i,dist));
+                        // allEdges.add(new Edge(point2,i,dist));  //WORKS FINE IF THIS LINE IS INCLUDED
                         pq.add(new Edge(point2,i,dist));
                     }
                 }
