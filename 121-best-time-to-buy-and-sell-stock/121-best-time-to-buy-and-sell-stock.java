@@ -25,7 +25,7 @@ class Solution {
         {
             if(prices[i] < low)
                 low = prices[i];
-            else if(prices[i] - low > mprofit)
+            else if(prices[i] - low > mprofit)  //else{mprofit = Math.max(mprofit, prices[i] - low);}
             {
                 mprofit = prices[i] - low;
             }
