@@ -5,16 +5,20 @@ class Solution {
         int[] left = new int[n];
         int[] right = new int[n];
         
+        int temp = 1;
         left[0] = 1;
         for(int i=1;i<n;i++)
         {
-            left[i] = nums[i-1] * left[i-1];
+            temp = nums[i-1] * temp;
+            left[i] = temp;
         }
         
+        int temp2 = 1;
         right[n-1] = 1;
         for(int i=n-2;i>=0;i--)
         {
-            right[i] = nums[i+1] * right[i+1];
+            temp2 = nums[i+1] * temp2;
+            right[i] = temp2;
         }
         
         for(int i =0;i<n;i++)
