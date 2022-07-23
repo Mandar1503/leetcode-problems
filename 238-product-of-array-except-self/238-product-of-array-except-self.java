@@ -59,7 +59,7 @@
         
 //     }
 // }
-
+ 
 //OPTIMIZED SOLUTION = IN O(1) SPACE COMPLEXITY
 class Solution {
     public int[] productExceptSelf(int[] nums) {
@@ -67,17 +67,17 @@ class Solution {
         int[] answer = new int[n];
         
         answer[0] = 1;
-        for(int i=1 ; i<n ; i++)
+        for(int i=1;i<n;i++)
         {
             answer[i] = answer[i-1] * nums[i-1];
         }
         
         int temp = 1;
-        for(int i = n-1 ; i >=0 ; i--)
+        for(int i = n-1 ; i>=0 ; i--)
         {
             answer[i] = answer[i] * temp;
             temp = temp * nums[i];
         }
-        return answer;
+        return answer;        
     }
 }
