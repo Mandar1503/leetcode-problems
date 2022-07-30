@@ -13,7 +13,7 @@ class Solution {
         for(int i=1;i<n;i++)
         {
             int curr = nums[i];
-            int temp_max =  Math.max(curr,Math.max(curr*max, curr*min));
+            int temp_max =  Math.max(curr,Math.max(curr*max, curr*min)); //using temp_max here because max is used below in min
             min = Math.min(curr,Math.min(curr*max, curr*min));
             
             max = temp_max;
