@@ -1,3 +1,4 @@
+//USING THEIR SOLUTION OF BINARY SEARCH
 class Solution {
     public int findMin(int[] nums) {
         
