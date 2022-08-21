@@ -1,3 +1,4 @@
+//SLIDING WINDOW PROBLEM = LOOK FOR 2ND MORE OPTIMIZED SOLUTION BY INCLUDING FILTERED CHARACTERS LIST OF PAIRS
 class Solution {
 	public String minWindow(String s, String t) 
 	{
@@ -54,3 +55,5 @@ class Solution {
 		return ans[0]==-1 ? "" : s.substring(ans[1],ans[2]+1);
 	}
 }
+
+
