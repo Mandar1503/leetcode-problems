@@ -71,9 +71,8 @@ class Solution {
 		
 		for(int i=0;i<t.length();i++)
 		{	
-			char c = t.charAt(i);
-			int count = tCharSet.getOrDefault(c,0);
-			tCharSet.put(c,count+1);
+			int count = tCharSet.getOrDefault(t.charAt(i),0);
+			tCharSet.put(t.charAt(i),count+1);
 		}
 
 		int required = tCharSet.size();
@@ -85,6 +84,7 @@ class Solution {
 		int formed = 0;
 		
         int[] ans = {-1,0,0};
+
 		while(r<s.length())
 		{
 			char ch = s.charAt(r);
@@ -92,9 +92,7 @@ class Solution {
 			sCharSet.put(ch,cnt+1);
 			
 			if(tCharSet.containsKey(ch) && sCharSet.get(ch).intValue()==tCharSet.get(ch).intValue())
-			{
 				formed++;
-			}
 			
 
 			while(l<=r && required==formed)
