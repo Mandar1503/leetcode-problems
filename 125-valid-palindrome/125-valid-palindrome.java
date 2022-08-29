@@ -27,22 +27,38 @@
 //     }
 // }
 
+
+//THEIR SOLUTION BY REVERSING THE STRING
+// class Solution {
+//     public boolean isPalindrome(String s) {
+//         StringBuilder sb = new StringBuilder();
+        
+//         for(char c : s.toCharArray())
+//         {
+//             if(Character.isLetterOrDigit(c))
+//             {
+//                 sb.append(Character.toLowerCase(c)); 
+//             }
+//         }
+        
+//         String filteredString = sb.toString();
+//         String reversedString = sb.reverse().toString();
+        
+//         return filteredString.equals(reversedString);
+            
+//     }
+// }
+
+//USING JAVA 8 STREAMS
 class Solution {
     public boolean isPalindrome(String s) {
         StringBuilder sb = new StringBuilder();
         
-        for(char c : s.toCharArray())
-        {
-            if(Character.isLetterOrDigit(c))
-            {
-                sb.append(Character.toLowerCase(c)); 
-            }
-        }
+        s.chars()
+            .filter(c->Character.isLetterOrDigit(c))
+            .mapToObj(c->Character.toLowerCase((char)c))
+            .forEach(sb::append);
         
-        String filteredString = sb.toString();
-        String reversedString = sb.reverse().toString();
-        
-        return filteredString.equals(reversedString);
-            
+        return sb.toString().equals(sb.reverse().toString());
     }
 }
