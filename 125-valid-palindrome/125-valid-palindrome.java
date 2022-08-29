@@ -1,3 +1,4 @@
+//MY SOLUTION USING TWO POINTER
 class Solution {
     public boolean isPalindrome(String s) {
         s = s.toUpperCase();
@@ -22,10 +23,6 @@ class Solution {
             else
                 return false;
         }
-        // for(Character c : sarr)
-        // {
-        //     System.out.println(c);
-        // }
         return true;
     }
 }
