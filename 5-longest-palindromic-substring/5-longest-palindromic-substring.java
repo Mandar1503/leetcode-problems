@@ -26,30 +26,15 @@ class Solution {
             {
                 if((r-l+1) > reslen)
                 {
-                    res.delete(0,s.length());
+                    res.delete(0,res.length());
                     res.append(s.substring(l,r+1));
                     reslen = r-l+1;   
                 }
                 l--;
                 r++;
             }
-            
             // helperfunction(l,r,reslen,res,s);
         }
         return res.toString();
     }
-    
-    // public void helperfunction(int l,int r, int reslen, StringBuilder res, String s)
-    // {
-    //     while(l >=0 && r < s.length() && s.charAt(l)==s.charAt(r))
-    //     {
-    //         if((r-l+1) > reslen)
-    //         {
-    //             res.append(s.substring(l,r+1));
-    //             reslen = res.length();   
-    //         }
-    //         l--;
-    //         r++;
-    //     }
-    // }
 }
