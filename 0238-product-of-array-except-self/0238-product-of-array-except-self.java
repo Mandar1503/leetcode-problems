@@ -82,7 +82,7 @@
 //     }
 // }
 
-//MY SOLUTION
+//MY SOLUTION OPTIMIZED
 class Solution{
 	public int[] productExceptSelf(int[] nums) 
 	{	
