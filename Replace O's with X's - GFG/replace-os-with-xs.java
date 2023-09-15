@@ -41,10 +41,10 @@ class GFG{
 
 class Solution{
     
-    static void dfs(int x, int y, int[][] vis, char[][] a, int[] delrow, int[] delcol)
+    static void dfs(int x, int y, int[][] vis, char[][] a)
     {
-        // int[] delrow = {1, 0, -1, 0};
-        // int[] delcol = {0, 1, 0, -1};
+        int[] delrow = {1, 0, -1, 0};
+        int[] delcol = {0, 1, 0, -1};
         
         vis[x][y] = 1;
         int r = a.length;
@@ -57,7 +57,7 @@ class Solution{
             
             if(nrow>=0 && nrow<r && ncol>=0 && ncol<c && vis[nrow][ncol]==0 && a[nrow][ncol]=='O')
             {
-                dfs(nrow, ncol, vis, a, delrow, delcol);
+                dfs(nrow,ncol,vis,a);
             }
         }
     }
@@ -65,20 +65,19 @@ class Solution{
     static char[][] fill(int n, int m, char a[][])
     {
         // code here
-        int[] delrow = {1, 0, -1, 0};
-        int[] delcol = {0, 1, 0, -1};
+        
         int[][] vis = new int[n][m];
         
         for(int i=0;i<n;i++)
         {
             if(a[i][0] == 'O' && vis[i][0]==0)
             {
-                dfs(i, 0, vis, a, delrow, delcol);
+                dfs(i, 0, vis, a);
             }
             
             if(a[i][m-1] == 'O' && vis[i][m-1]==0)
             {
-                dfs(i, m-1, vis, a, delrow, delcol);
+                dfs(i, m-1, vis, a);
             }
         }
         
@@ -86,12 +85,12 @@ class Solution{
         {
             if(a[0][j] == 'O' && vis[0][j]==0)
             {
-                dfs(0, j, vis, a, delrow, delcol);
+                dfs(0, j, vis, a);
             }
             
             if(a[n-1][j] == 'O' && vis[n-1][j]==0)
             {
-                dfs(n-1, j, vis, a, delrow, delcol);
+                dfs(n-1, j, vis, a);
             }
         }
         
