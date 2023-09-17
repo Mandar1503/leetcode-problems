@@ -35,12 +35,25 @@ class GFG {
 
 
 // User function Template for Java
+class Pair{
+    int xcord;
+    int ycord;
+    
+    public Pair(int xcord, int ycord)
+    {
+        this.xcord = xcord;
+        this.ycord = ycord;
+    }
+}
 
+
+//DFS SOLUTION
 class Solution {
 
     int numberOfEnclaves(int[][] grid) {
 
         // Your code here
+        Queue<Pair> q = new LinkedList<>();
         int r = grid.length;
         int c = grid[0].length;
         int[][] vis = new int[r][c];
@@ -51,13 +64,15 @@ class Solution {
             if(vis[i][0]!=1 && grid[i][0]==1)
             {
                 vis[i][0] = 1;
-                dfs(i,0,r,c,vis,grid);
+                // bfs(i,0,r,c,vis,grid,q);
+                q.add(new Pair(i,0));
             }
             
             if(vis[i][c-1]!=1 && grid[i][c-1]==1)
             {
                 vis[i][c-1] = 1;
-                dfs(i,c-1,r,c,vis,grid);
+                // bfs(i,c-1,r,c,vis,grid,q);
+                q.add(new Pair(i,c-1));
             }
         }
         
@@ -66,13 +81,38 @@ class Solution {
             if(vis[0][j]!=1 && grid[0][j]==1)
             {
                 vis[0][j] = 1;
-                dfs(0,j,r,c,vis,grid);
+                // bfs(0,j,r,c,vis,grid,q);
+                q.add(new Pair(0,j));
             }
             
             if(vis[r-1][j]!=1 && grid[r-1][j]==1)
             {
                 vis[r-1][j] = 1;
-                dfs(r-1,j,r,c,vis,grid);
+                // bfs(r-1,j,r,c,vis,grid,q);
+                q.add(new Pair(r-1,j));
+            }
+        }
+        
+        
+        while(!q.isEmpty())
+        {
+            int xcrd = q.peek().xcord;
+            int ycrd = q.peek().ycord;
+            q.remove();
+            
+            int[] delrow = {1, 0, -1, 0};
+            int[] delcol = {0, 1, 0, -1};
+            
+            for(int i=0;i<4;i++)
+            {
+                int nx = xcrd + delrow[i];
+                int ny = ycrd + delcol[i];
+                
+                if(nx>=0 && nx<r && ny>=0 && ny<c && grid[nx][ny]==1 && vis[nx][ny]!=1)
+                {
+                    vis[nx][ny] = 1;
+                    q.add(new Pair(nx,ny));
+                }
             }
         }
         
@@ -89,24 +129,6 @@ class Solution {
         }
         
         return count;
-    }
-    
-    void dfs(int x, int y, int r, int c, int[][] vis, int[][] grid)
-    {
-        int[] delrow = {1, 0, -1, 0};
-        int[] delcol = {0, 1, 0, -1};
-        
-        for(int i=0;i<4;i++)
-        {
-            int nx = x + delrow[i];
-            int ny = y + delcol[i];
-            
-            if(nx>=0 && nx<r && ny>=0 && ny<c && grid[nx][ny]==1 && vis[nx][ny]!=1)
-            {
-                vis[nx][ny]=1;
-                dfs(nx,ny,r,c,vis,grid);
-            }
-        }
     }
     
 }
