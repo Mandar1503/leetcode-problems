@@ -56,18 +56,24 @@ class Solution {
         int n = grid.length;
         int m = grid[0].length;
         
-        int[] delrow = {1,1,0,-1,-1,-1,0,1};
-        int[] delcol = {0,1,1,1,0,-1,-1,-1};
+        // int[] delrow = {1,1,0,-1,-1,-1,0,1};
+        // int[] delcol = {0,1,1,1,0,-1,-1,-1};
         
-        for(int i=0;i<8;i++)
+        // for(int i=0;i<8;i++)
+        // {
+        
+        for(int delrow=-1; delrow<=1; delrow++)
         {
-            int nx = x + delrow[i];
-            int ny = y + delcol[i];
-            
-            if(nx>=0 && nx<n && ny>=0 && ny<m && grid[nx][ny]=='1' && vis[nx][ny]!=1)
+            for(int delcol=-1; delcol<=1; delcol++)
             {
-                vis[nx][ny] = 1;
-                dfs(nx,ny,vis,grid);
+                int nx = x + delrow;
+                int ny = y + delcol;
+            
+                if(nx>=0 && nx<n && ny>=0 && ny<m && grid[nx][ny]=='1' && vis[nx][ny]!=1)
+                {
+                    vis[nx][ny] = 1;
+                    dfs(nx,ny,vis,grid);
+                }
             }
         }
     }
