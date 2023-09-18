@@ -37,6 +37,45 @@ class GFG
 // } Driver Code Ends
 
 
+//DFS Solution: WORKS! WRITTEN BY ME
+// class Solution
+// {
+//     private void dfs(int r, int c, int[][] vis, int[][] image, int oldColor, int newColor)
+//     {
+//         int n = image.length;
+//         int m = image[0].length;
+//         int[] delrow = {1,0,-1,0};
+//         int[] delcol = {0,1,0,-1};
+        
+//         for(int i=0;i<4;i++)
+//         {
+//             int nr = r + delrow[i];
+//             int nc = c + delcol[i];
+                
+//             if(nr>=0 && nr<n && nc>=0 && nc<m && vis[nr][nc]!=1 && image[nr][nc]==oldColor)
+//             {
+//                 image[nr][nc] = newColor;
+//                 vis[nr][nc] = 1;
+//                 dfs(nr,nc,vis,image,oldColor,newColor);
+//             }
+//         }
+//     }
+    
+//     public int[][] floodFill(int[][] image, int sr, int sc,int newColor)
+//     {
+//         // Code here 
+//         int n = image.length;
+//         int m = image[0].length;
+//         int[][] vis = new int[n][m];
+//         int oldColor = image[sr][sc];
+//         image[sr][sc] = newColor;
+//         vis[sr][sc] = 1;
+//         dfs(sr,sc,vis,image,oldColor,newColor);
+//         return image;
+//     }
+// }
+
+
 //BFS CODE : ERROR - TIME LIMIT EXCEEDED
 class Pair{
     int r;
