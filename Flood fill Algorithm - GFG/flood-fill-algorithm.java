@@ -37,6 +37,57 @@ class GFG
 // } Driver Code Ends
 
 
+//BFS CODE : ERROR - TIME LIMIT EXCEEDED
+// class Pair{
+//     int r;
+//     int c;
+//     public Pair(int r, int c)
+//     {
+//         this.r = r;
+//         this.c = c;
+//     }
+// }
+
+// class Solution
+// {
+//     public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
+//     {
+//         // Code here 
+//         int n = image.length;
+//         int m = image[0].length;
+//         Queue<Pair> q = new LinkedList<>();
+//         int[][] vis = new int[n][m];
+//         q.add(new Pair(sr,sc));
+//         int oldColor = image[sr][sc];
+//         image[sr][sc] = newColor;
+        
+//         while(!q.isEmpty())
+//         {
+//             int x = q.peek().r;
+//             int y = q.peek().c;
+//             q.remove();
+            
+//             int[] delrow = {1,0,-1,0};
+//             int[] delcol = {0,1,0,-1};
+            
+//             for(int i=0;i<4;i++)
+//             {
+//                 int nx = x + delrow[i];
+//                 int ny = y + delcol[i];
+                
+//                 if(nx>=0 && nx<n && ny>=0 && ny<m && vis[nx][ny]!=1 && image[nx][ny]==oldColor)
+//                 {
+//                     image[nx][ny] = newColor;
+//                     q.add(new Pair(nx,ny));
+//                 }
+//             }
+//         }
+//         return image;
+//     }
+// }
+
+
+//DFS Solution
 class Solution
 {
     private void dfs(int r, int c, int[][] vis, int[][] image, int oldColor, int newColor)
