@@ -59,7 +59,7 @@ class Solution
         int[][] vis = new int[n][m];
         
         int oldColor = image[sr][sc];
-        if (oldColor == newColor) {
+        if (oldColor == newColor) {   //VERY IMPORTANT VALIDATION - IF NOTE WRITTEN THEN IT LEADS TO "TIME LIMIT EXCEEDED"
             return image; // No need to flood fill if new and old colors are the same.
         }
         
@@ -71,7 +71,7 @@ class Solution
             int x = q.peek().r;
             int y = q.peek().c;
             q.remove();
-            image[x][y] = newColor;
+            // image[x][y] = newColor;
             
             int[] delrow = {1,0,-1,0};
             int[] delcol = {0,1,0,-1};
