@@ -47,10 +47,10 @@ class Solution
         int[] delrow = {1,0,-1,0};
         int[] delcol = {0,1,0,-1};
         
-        		vis[r][c] = 1;  
-        		image[r][c] = newColor; // this also works instead of writing this 2 times: 1st in the
-                                     //flood fill function and 2nd inthe  if-cond under
-                                     // the for-loop in the dfs function
+        // 		vis[r][c] = 1;  
+        // 		image[r][c] = newColor; // this also works instead of writing this 2 times: 1st in the
+        //                              //flood fill function and 2nd inthe  if-cond under
+        //                              // the for-loop in the dfs function
         
         for(int i=0;i<4;i++)
         {
@@ -59,8 +59,8 @@ class Solution
                 
             if(nr>=0 && nr<n && nc>=0 && nc<m && vis[nr][nc]!=1 && image[nr][nc]==oldColor)
             {
-                // image[nr][nc] = newColor;
-                // vis[nr][nc] = 1;
+                image[nr][nc] = newColor;
+                vis[nr][nc] = 1;
                 dfs(nr,nc,vis,image,oldColor,newColor);
             }
         }
@@ -73,8 +73,8 @@ class Solution
         int m = image[0].length;
         int[][] vis = new int[n][m];
         int oldColor = image[sr][sc];
-        // image[sr][sc] = newColor;
-        // vis[sr][sc] = 1;
+        image[sr][sc] = newColor;
+        vis[sr][sc] = 1;
         dfs(sr,sc,vis,image,oldColor,newColor);
         return image;
     }
