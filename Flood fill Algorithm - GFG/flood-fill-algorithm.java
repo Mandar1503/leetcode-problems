@@ -38,42 +38,47 @@ class GFG
 
 
 //DFS Solution: WORKS! WRITTEN BY ME
-// class Solution
-// {
-//     private void dfs(int r, int c, int[][] vis, int[][] image, int oldColor, int newColor)
-//     {
-//         int n = image.length;
-//         int m = image[0].length;
-//         int[] delrow = {1,0,-1,0};
-//         int[] delcol = {0,1,0,-1};
+class Solution
+{
+    private void dfs(int r, int c, int[][] vis, int[][] image, int oldColor, int newColor)
+    {
+        int n = image.length;
+        int m = image[0].length;
+        int[] delrow = {1,0,-1,0};
+        int[] delcol = {0,1,0,-1};
         
-//         for(int i=0;i<4;i++)
-//         {
-//             int nr = r + delrow[i];
-//             int nc = c + delcol[i];
+        		vis[r][c] = 1;  
+        		image[r][c] = newColor; // this also works instead of writing this 2 times: 1st in the
+                                     //flood fill function and 2nd inthe  if-cond under
+                                     // the for-loop in the dfs function
+        
+        for(int i=0;i<4;i++)
+        {
+            int nr = r + delrow[i];
+            int nc = c + delcol[i];
                 
-//             if(nr>=0 && nr<n && nc>=0 && nc<m && vis[nr][nc]!=1 && image[nr][nc]==oldColor)
-//             {
-//                 image[nr][nc] = newColor;
-//                 vis[nr][nc] = 1;
-//                 dfs(nr,nc,vis,image,oldColor,newColor);
-//             }
-//         }
-//     }
+            if(nr>=0 && nr<n && nc>=0 && nc<m && vis[nr][nc]!=1 && image[nr][nc]==oldColor)
+            {
+                // image[nr][nc] = newColor;
+                // vis[nr][nc] = 1;
+                dfs(nr,nc,vis,image,oldColor,newColor);
+            }
+        }
+    }
     
-//     public int[][] floodFill(int[][] image, int sr, int sc,int newColor)
-//     {
-//         // Code here 
-//         int n = image.length;
-//         int m = image[0].length;
-//         int[][] vis = new int[n][m];
-//         int oldColor = image[sr][sc];
-//         image[sr][sc] = newColor;
-//         vis[sr][sc] = 1;
-//         dfs(sr,sc,vis,image,oldColor,newColor);
-//         return image;
-//     }
-// }
+    public int[][] floodFill(int[][] image, int sr, int sc,int newColor)
+    {
+        // Code here 
+        int n = image.length;
+        int m = image[0].length;
+        int[][] vis = new int[n][m];
+        int oldColor = image[sr][sc];
+        // image[sr][sc] = newColor;
+        // vis[sr][sc] = 1;
+        dfs(sr,sc,vis,image,oldColor,newColor);
+        return image;
+    }
+}
 
 
 //BFS CODE : ERROR - TIME LIMIT EXCEEDED
@@ -129,37 +134,3 @@ class GFG
 //         return image;
 //     }
 // }
-
-
-class Solution{
-	public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
-	{
-		int n = image.length;
-		int m = image[0].length;
-		int[][] vis =  new int[n][m];
-		int oldColor = image[sr][sc];
-		dfs(sr,sc,image,vis,oldColor,newColor);
-		return image;
-	}
-
-	private void dfs(int x, int y, int[][] image, int[][] vis, int oldColor, int newColor)
-	{
-		int n = image.length;
-		int m = image[0].length;
-		vis[x][y] = 1;
-		image[x][y] = newColor;
-		
-		int[] delrow = {1,0,-1,0};
-		int[] delcol = {0,1,0,-1};
-		
-		for(int i=0;i<4;i++)
-		{	
-			int nx = x+delrow[i];
-			int ny = y+delcol[i];
-			if(nx<n && nx>=0 && ny<m && ny>=0 && image[nx][ny]==oldColor && vis[nx][ny]!=1)
-			{
-				dfs(nx,ny,image,vis,oldColor,newColor);
-			}
-		}
-	}
-};
