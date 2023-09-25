@@ -32,53 +32,104 @@ class GFG {
 //User function Template for Java
 
 class Solution {
-    
-    private static void dfs(int n, ArrayList<ArrayList<Integer>> adjList, int[] vis)
-    {
-        vis[n] = 1;
-        for(Integer it:adjList.get(n))
-        {
-            if(vis[it]!=1)
-            {
-                dfs(it,adjList,vis);
-            }
-        }
-    }
-    
-    static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
-        // code here
-        
-        ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
-        
-        for(int i=0;i<V;i++)
-        {
-            adjList.add(new ArrayList<Integer>());
-        }
-        
-        for(int i=0;i<V;i++)
-        {
-            for(int j=0;j<V;j++)
-            {
-                if(adj.get(i).get(j)==1 && i!=j)
-                {
-                    adjList.get(i).add(j);
-                    adjList.get(j).add(i);
-                }
-            }
-        }
-        
-        int[] vis = new int[V];
-        int cntr = 0;
-        
-        for(int i=0;i<V;i++)
-        {
-            if(vis[i]!=1)
-            {
-                cntr++;
-                dfs(i,adjList,vis);
-            }
-        }
-        
-        return cntr;
-    }
+
+	private static void dfs(int x, ArrayList<ArrayList<Integer>> adjList, int[] vis, int V)
+	{
+		vis[x] = 1;
+		for(Integer it:adjList.get(x))
+		{
+			if(vis[it]!=1)
+			{
+				dfs(it,adjList,vis,V);
+			}	
+		}
+	}
+
+	static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
+        	// code here
+
+		int[] vis = new int[V];
+		int count = 0;
+		ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
+			
+		for(int i=0;i<V;i++)
+		{
+			adjList.add(new ArrayList<Integer>());
+		}	
+		
+		for(int i=0;i<V;i++)
+		{
+			for(int j=0;j<V;j++)
+			{
+			    if(adj.get(i).get(j)==1 && i!=j)
+			    {
+				    adjList.get(i).add(j);
+				    adjList.get(j).add(i);
+			    }
+			}
+		}
+		
+		for(int i=0;i<V;i++)
+		{
+			if(vis[i]!=1)
+			{
+				count++;
+				dfs(i,adjList,vis,V);
+			}
+		}
+		return count;
+    	}
 };
+
+
+// class Solution {
+    
+//     private static void dfs(int n, ArrayList<ArrayList<Integer>> adjList, int[] vis)
+//     {
+//         vis[n] = 1;
+//         for(Integer it:adjList.get(n))
+//         {
+//             if(vis[it]!=1)
+//             {
+//                 dfs(it,adjList,vis);
+//             }
+//         }
+//     }
+    
+//     static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
+//         // code here
+        
+//         ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
+        
+//         for(int i=0;i<V;i++)
+//         {
+//             adjList.add(new ArrayList<Integer>());
+//         }
+        
+//         for(int i=0;i<V;i++)
+//         {
+//             for(int j=0;j<V;j++)
+//             {
+//                 if(adj.get(i).get(j)==1 && i!=j)
+//                 {
+//                     adjList.get(i).add(j);
+//                     adjList.get(j).add(i);
+//                 }
+//             }
+//         }
+        
+//         int[] vis = new int[V];
+//         int cntr = 0;
+        
+//         for(int i=0;i<V;i++)
+//         {
+//             if(vis[i]!=1)
+//             {
+//                 cntr++;
+//                 dfs(i,adjList,vis);
+//             }
+//         }
+        
+//         return cntr;
+//     }
+// };
