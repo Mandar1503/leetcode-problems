@@ -77,57 +77,89 @@ class GFG
 
 
 //BFS CODE : ERROR - TIME LIMIT EXCEEDED
-class Pair{
-    int r;
-    int c;
-    public Pair(int r, int c)
-    {
-        this.r = r;
-        this.c = c;
-    }
-}
+// class Pair{
+//     int r;
+//     int c;
+//     public Pair(int r, int c)
+//     {
+//         this.r = r;
+//         this.c = c;
+//     }
+// }
 
-class Solution
-{
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
-    {
-        // Code here 
-        int n = image.length;
-        int m = image[0].length;
-        Queue<Pair> q = new LinkedList<>();
-        int[][] vis = new int[n][m];
+// class Solution
+// {
+//     public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
+//     {
+//         // Code here 
+//         int n = image.length;
+//         int m = image[0].length;
+//         Queue<Pair> q = new LinkedList<>();
+//         int[][] vis = new int[n][m];
         
-        int oldColor = image[sr][sc];
-        if (oldColor == newColor) {   //VERY IMPORTANT VALIDATION - IF NOTE WRITTEN THEN IT LEADS TO "TIME LIMIT EXCEEDED"
-            return image; // No need to flood fill if new and old colors are the same.
-        }
+//         int oldColor = image[sr][sc];
+//         if (oldColor == newColor) {   //VERY IMPORTANT VALIDATION - IF NOTE WRITTEN THEN IT LEADS TO "TIME LIMIT EXCEEDED"
+//             return image; // No need to flood fill if new and old colors are the same.
+//         }
         
-        q.add(new Pair(sr,sc));
-        image[sr][sc] = newColor;
+//         q.add(new Pair(sr,sc));
+//         image[sr][sc] = newColor;
         
-        while(!q.isEmpty())
-        {
-            int x = q.peek().r;
-            int y = q.peek().c;
-            q.remove();
+//         while(!q.isEmpty())
+//         {
+//             int x = q.peek().r;
+//             int y = q.peek().c;
+//             q.remove();
             
-            int[] delrow = {1,0,-1,0};
-            int[] delcol = {0,1,0,-1};
+//             int[] delrow = {1,0,-1,0};
+//             int[] delcol = {0,1,0,-1};
             
-            for(int i=0;i<4;i++)
-            {
-                int nx = x + delrow[i];
-                int ny = y + delcol[i];
+//             for(int i=0;i<4;i++)
+//             {
+//                 int nx = x + delrow[i];
+//                 int ny = y + delcol[i];
                 
-                if(nx>=0 && nx<n && ny>=0 && ny<m && vis[nx][ny]!=1 && image[nx][ny]==oldColor)
-                {
-                    image[nx][ny] = newColor;
-                    q.add(new Pair(nx,ny));
-                }
-            }
-        }
-        return image;
-    }
-}
+//                 if(nx>=0 && nx<n && ny>=0 && ny<m && vis[nx][ny]!=1 && image[nx][ny]==oldColor)
+//                 {
+//                     image[nx][ny] = newColor;
+//                     q.add(new Pair(nx,ny));
+//                 }
+//             }
+//         }
+//         return image;
+//     }
+// }
 
 
+class Solution{
+	public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
+	{
+		int n = image.length;
+		int m = image[0].length;
+		int[][] vis =  new int[n][m];
+		int oldColor = image[sr][sc];
+		dfs(sr,sc,image,vis,oldColor,newColor);
+		return image;
+	}
+
+	private void dfs(int x, int y, int[][] image, int[][] vis, int oldColor, int newColor)
+	{
+		int n = image.length;
+		int m = image[0].length;
+		vis[x][y] = 1;
+		image[x][y] = newColor;
+		
+		int[] delrow = {1,0,-1,0};
+		int[] delcol = {0,1,0,-1};
+		
+		for(int i=0;i<4;i++)
+		{	
+			int nx = x+delrow[i];
+			int ny = y+delcol[i];
+			if(nx<n && nx>=0 && ny<m && ny>=0 && image[nx][ny]==oldColor && vis[nx][ny]!=1)
+			{
+				dfs(nx,ny,image,vis,oldColor,newColor);
+			}
+		}
+	}
+};
