@@ -74,6 +74,9 @@ class Solution
             }
         }
         
+        int[] delrow = {1,0,-1,0};
+        int[] delcol = {0,1,0,-1};
+        
         while(!q.isEmpty())
         {
             int x = q.peek().row;
@@ -82,17 +85,13 @@ class Solution
             q.remove();
             maxtm = Math.max(maxtm,ctm);
             
-            int[] delrow = {1,0,-1,0};
-            int[] delcol = {0,1,0,-1};
-            
             for(int i=0;i<4;i++)
             {
                 int nx = x + delrow[i];
                 int ny = y + delcol[i];
             
-                if(nx<n && nx>=0 && ny<m && ny>=0 && grid[nx][ny]==1 && vis[nx][ny]!=1)
+                if(nx<n && nx>=0 && ny<m && ny>=0 && grid[nx][ny]==1 && vis[nx][ny]==0)
                 {
-                    grid[nx][ny] = 2;
                     vis[nx][ny] = 2;
                     q.add(new Pair(nx,ny,ctm+1));
                     cntr++;
