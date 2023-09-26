@@ -33,16 +33,15 @@ class GFG
 }
 // } Driver Code Ends
 
-class Node{
+class Pair{
     int x;
     int y;
-    int lvl;
-    
-    public Node(int x, int y, int lvl)
+    int cntr;
+    public Pair(int x, int y, int cntr)
     {
-        this.x= x;
+        this.x = x;
         this.y = y;
-        this.lvl = lvl;
+        this.cntr = cntr;
     }
 }
 
@@ -51,56 +50,54 @@ class Solution
     //Function to find distance of nearest 1 in the grid for each cell.
     public int[][] nearest(int[][] grid)
     {
-        int r = grid.length;
-        int c = grid[0].length;
-        int[][] vis = new int[r][c];
-        int[][] dist = new int[r][c];
+        // Code here
+        int n = grid.length;
+        int m =grid[0].length;
+        int[][] ans = new int[n][m];
+        int[][] vis = new int[n][m];
+        Queue<Pair> q = new LinkedList<>();
         
-        Queue<Node> q = new LinkedList<Node>();
-        
-        for(int i=0;i<r;i++)
+        for(int i=0;i<n;i++)
         {
-            for(int j=0;j<c;j++)
+            for(int j=0;j<m;j++)
             {
                 if(grid[i][j]==1)
                 {
-                    q.add(new Node(i,j,0));
+                    q.add(new Pair(i,j,0));
                     vis[i][j] = 1;
-                    // dist[i][j] = 0;
                 }
                 else
                 {
                     vis[i][j] = 0;
-                    // dist[i][j] = Integer.MAX_VALUE;
                 }
             }
         }
         
-        int[] nrow = {1, 0, -1, 0};
-        int[] ncol = {0, 1, 0, -1};
+        int[] delrow = {1,0,-1,0};
+        int[] delcol = {0,1,0,-1};
         
         while(!q.isEmpty())
         {
-            int nx = q.peek().x;
-            int ny = q.peek().y;
-            int nlvl = q.peek().lvl;
+            int ni = q.peek().x;
+            int nj = q.peek().y;
+            int ncntr = q.peek().cntr;
             q.remove();
-            // vis[nx][ny] = 1;
-            dist[nx][ny] = nlvl;
+            ans[ni][nj] = ncntr;
             
             for(int i=0;i<4;i++)
             {
-                int tx = nx+nrow[i];
-                int ty = ny+ncol[i];
-                if(tx<r && tx>=0 && ty<c && ty>=0 && vis[tx][ty]==0)
+                int nx = ni + delrow[i];
+                int ny = nj + delcol[i];
+                
+                if(nx>=0 && nx<n && ny>=0 && ny<m && vis[nx][ny]!=1 && grid[nx][ny]==0)
                 {
-                    vis[tx][ty] = 1;
-                    dist[tx][ty] = nlvl+1;
-                    q.add(new Node(tx,ty,nlvl+1));
+                    q.add(new Pair(nx,ny,ncntr+1));
+                    vis[nx][ny] = 1;
                 }
             }
+            
         }
         
-        return dist;
+        return ans;
     }
 }
