@@ -46,7 +46,6 @@ class Solution {
     {
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(src,-1));
-        // vis[src] = 1;
         
         while(!q.isEmpty())
         {
@@ -59,7 +58,6 @@ class Solution {
             {
                 if(vis[it]!=1)
                 {
-                    // vis[it]=1;
                     q.add(new Pair(it,node));
                 }
                 else if(it!=parent)
