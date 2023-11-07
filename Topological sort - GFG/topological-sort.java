@@ -64,11 +64,10 @@ class Solution
     {
         vis[node] = 1;
         
-        for(int it:adj.get(node)){
-            if(vis[it]!=1){
+        for(int it:adj.get(node))
+            if(vis[it]!=1)
                 dfs(it,adj,vis,st);
-            }
-        }
+                
         st.push(node);
     }
     
