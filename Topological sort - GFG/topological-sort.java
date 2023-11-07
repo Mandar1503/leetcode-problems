@@ -78,11 +78,9 @@ class Solution
         int[] vis = new int[V];
         Stack<Integer> st = new Stack<>();
         
-        for(int i=0;i<V;i++){
-            if(vis[i]!=1){
+        for(int i=0;i<V;i++)
+            if(vis[i]!=1)
                 dfs(i,adj,vis,st);
-            }
-        }
         
         int[] ans = new int[V];
         int i=0;
