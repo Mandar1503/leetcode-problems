@@ -89,9 +89,8 @@ class Solution
         int i=0;
         while(!st.isEmpty())
         {
-            ans[i] = st.peek();
+            ans[i++] = st.peek();
             st.pop();
-            i++;
         }
         return ans;
     }
