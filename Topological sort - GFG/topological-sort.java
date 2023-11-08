@@ -105,9 +105,6 @@ class Solution
         int[] indegree =  new int[V];
         
         for(int i=0;i<V;i++)
-            indegree[i]=0;
-        
-        for(int i=0;i<V;i++)
             for(int it:adj.get(i))
                 indegree[it]++;
         
@@ -122,8 +119,7 @@ class Solution
         
         while(!q.isEmpty()){
             int temp = q.peek();
-            sorted[i] = temp;
-            i++;
+            sorted[i++] = temp;
             q.remove();
             
             for(int it:adj.get(temp)){
