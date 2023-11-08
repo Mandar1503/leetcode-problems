@@ -31,6 +31,9 @@ class DriverClass {
 
 /*Complete the function below*/
 
+
+//****DONE USING DFS CYCLE CHECK****
+
 // class Solution {
     
 //     private boolean dfsCheck(int start, int[] vis, int[] pathVis, ArrayList<ArrayList<Integer>> adj)
@@ -70,6 +73,8 @@ class DriverClass {
 //     }
 // }
 
+
+//***** DONE USING KAHN'S ALGO I.E. BFS(using indegree)*****
 
 class Solution {
     // Function to detect cycle in a directed graph.
