@@ -57,38 +57,81 @@ class Main {
 
 /*Complete the function below*/
 
+//DFS SOLUTION
 
+// class Solution
+// {
+//     private static void dfs(int node, ArrayList<ArrayList<Integer>> adj, int[] vis, Stack<Integer> st)
+//     {
+//         vis[node] = 1;
+        
+//         for(int it:adj.get(node))
+//             if(vis[it]!=1)
+//                 dfs(it,adj,vis,st);
+                
+//         st.push(node);
+//     }
+    
+//     //Function to return list containing vertices in Topological order. 
+//     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+//     {
+//         // add your code here
+//         int[] vis = new int[V];
+//         Stack<Integer> st = new Stack<>();
+        
+//         for(int i=0;i<V;i++)
+//             if(vis[i]!=1)
+//                 dfs(i,adj,vis,st);
+        
+//         int[] ans = new int[V];
+//         int i=0;
+//         while(!st.isEmpty())
+//         {
+//             ans[i++] = st.peek();
+//             st.pop();
+//         }
+//         return ans;
+//     }
+// }
+
+
+//BFS - KAHN'S ALGORITHM - TOPO SORT
 class Solution
 {
-    private static void dfs(int node, ArrayList<ArrayList<Integer>> adj, int[] vis, Stack<Integer> st)
-    {
-        vis[node] = 1;
-        
-        for(int it:adj.get(node))
-            if(vis[it]!=1)
-                dfs(it,adj,vis,st);
-                
-        st.push(node);
-    }
-    
     //Function to return list containing vertices in Topological order. 
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
         // add your code here
-        int[] vis = new int[V];
-        Stack<Integer> st = new Stack<>();
+        int[] indegree =  new int[V];
         
         for(int i=0;i<V;i++)
-            if(vis[i]!=1)
-                dfs(i,adj,vis,st);
+            indegree[i]=0;
         
-        int[] ans = new int[V];
+        for(int i=0;i<V;i++)
+            for(int it:adj.get(i))
+                indegree[it]++;
+        
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i=0;i<V;i++)
+            if(indegree[i]==0)
+                q.add(i);
+         
+        int[] sorted = new int[V];
         int i=0;
-        while(!st.isEmpty())
-        {
-            ans[i++] = st.peek();
-            st.pop();
+        
+        while(!q.isEmpty()){
+            int temp = q.peek();
+            sorted[i] = temp;
+            i++;
+            q.remove();
+            
+            for(int it:adj.get(temp)){
+                indegree[it]--;
+                if(indegree[it]==0)
+                    q.add(it);
+            }
         }
-        return ans;
+        return sorted;
     }
 }
