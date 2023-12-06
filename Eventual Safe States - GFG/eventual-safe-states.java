@@ -41,6 +41,8 @@ class GFG {
 
 // User function Template for    Java
 
+
+//DFS SOLUTION
 // class Solution {
 
 //     List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj) {
@@ -88,7 +90,7 @@ class GFG {
 
 
 
-
+//BFS - TOPOLOGICAL SORT SOLUTION(BY REVERSING THE GRAPH TO GET OUTDEGREES for TOPO SORT)
 class Solution{
 	List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj){
 		
