@@ -93,24 +93,23 @@ class Solution{
 	List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj){
 		
 		List<List<Integer>> revAdj = new ArrayList<>();
-		
-		for(int i=0;i<V;i++)
-		    revAdj.add(new ArrayList<>());
-		
 		int[] indegree = new int[V];
 		
 		for(int i=0;i<V;i++)
 		    indegree[i] = 0;
 		
+		for(int i=0;i<V;i++)
+		    revAdj.add(new ArrayList<>());
+		    
 		for(int i=0;i<V;i++){
 			for(int it:adj.get(i)){
-			    revAdj.get(it).add(i);
+				revAdj.get(it).add(i); 
 				indegree[i]++;
 			}
 		}
 		
 		Queue<Integer> q = new LinkedList<>();
-
+		
 		for(int i=0;i<V;i++)
 			if(indegree[i]==0)
 				q.add(i);
@@ -122,8 +121,9 @@ class Solution{
 			sorted.add(node);
 			for(int it:revAdj.get(node)){
 				indegree[it]--;
-				if(indegree[it]==0)
-					q.add(it);	
+				if(indegree[it]==0){
+			        q.add(it);	
+			    }
 			}
 		}
 		Collections.sort(sorted);
